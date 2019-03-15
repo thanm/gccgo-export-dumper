@@ -34,6 +34,14 @@ func usage(msg string) {
 		fmt.Fprintf(os.Stderr, "error: %s\n", msg)
 	}
 	fmt.Fprintf(os.Stderr, "usage: gccgo-export-dumper [flags] { files }\n")
+	fmt.Fprintf(os.Stderr, `
+Works on either objects (.o files) or archives (.a files); dumps out
+gccgo export data for a package in text form, to standard output. Example:
+
+  cd $GOPATH/src/mumble
+  go build -o mumble.a -compiler gccgo .
+  gccgo-export-dumper mumble.a
+`)
 	flag.PrintDefaults()
 	os.Exit(2)
 }
